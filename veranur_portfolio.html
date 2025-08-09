@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veranur Durmuş - Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            border-radius: 20px;
+            margin-bottom: 2rem;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+            font-weight: bold;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .contact-item:hover {
+            color: #667eea;
+        }
+
+        .section {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #333;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-category {
+            background: rgba(102, 126, 234, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            color: #555;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .skill-list li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            padding: 2rem;
+            border-radius: 15px;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .project-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .project-date {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+
+        .tech-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        .project-description {
+            color: #555;
+            line-height: 1.6;
+            margin-top: 1rem;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: #764ba2;
+        }
+
+        .experience-item {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            padding: 2rem;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #667eea;
+        }
+
+        .experience-item h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.4rem;
+        }
+
+        .experience-meta {
+            color: #888;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .experience-description {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .skills-grid,
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 1.5rem;
+            }
+        }
+
+        .education-item {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #667eea;
+        }
+
+        .volunteer-item {
+            background: rgba(102, 126, 234, 0.05);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1rem;
+            border-left: 4px solid #764ba2;
+        }
+
+        .volunteer-item h4 {
+            color: #764ba2;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-menu {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 25px;
+            padding: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .nav-menu a {
+            display: inline-block;
+            padding: 8px 16px;
+            margin: 0 5px;
+            text-decoration: none;
+            color: #667eea;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .nav-menu a:hover {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            transform-origin: left;
+            transform: scaleX(0);
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-indicator" id="scrollIndicator"></div>
+    
+    <nav class="nav-menu">
+        <a href="#home">Ana Sayfa</a>
+        <a href="#about">Hakkımda</a>
+        <a href="#skills">Yetenekler</a>
+        <a href="#projects">Projeler</a>
+        <a href="#experience">Deneyim</a>
+        <a href="#contact">İletişim</a>
+    </nav>
+
+    <div class="container">
+        <header class="header" id="home">
+            <div class="profile-img">VD</div>
+            <h1>Veranur Durmuş</h1>
+            <p class="subtitle">Bilgisayar Mühendisliği Öğrencisi | Full-Stack Developer | iOS Developer</p>
+            <p class="subtitle">Fatih Sultan Mehmet Vakıf Üniversitesi</p>
+            
+            <div class="contact-info">
+                <a href="tel:+905428027091" class="contact-item">
+                    📞 +90 542 802 7091
+                </a>
+                <a href="mailto:durmusveranur@gmail.com" class="contact-item">
+                    ✉️ durmusveranur@gmail.com
+                </a>
+                <a href="https://github.com/Vera-nur" target="_blank" class="contact-item">
+                    🔗 GitHub Profile
+                </a>
+                <div class="contact-item">
+                    📍 Bahçelievler, İstanbul
+                </div>
+            </div>
+        </header>
+
+        <section class="section" id="about">
+            <h2>Hakkımda</h2>
+            <p class="about-text">
+                Teknolojiye tutkulu bir bilgisayar mühendisliği öğrencisiyim. Yazılım geliştirme, yapay zekâ ve 
+                veri işleme alanlarında kendimi sürekli geliştiriyorum. Proje üretmeyi, ekip çalışması yapmayı 
+                ve çözüm odaklı düşünmeyi seviyorum. Amacım, yenilikçi projelerde aktif rol almak ve 
+                ülkemizin teknolojik kalkınmasına katkı sağlamak.
+            </p>
+            <p class="about-text">
+                Full-stack web geliştirme, iOS uygulamaları ve gömülü sistemler alanlarında deneyim sahibiyim. 
+                Analitik düşünce yapım ve programlama yeteneklerimi kullanarak yenilikçi çözümler üretmeye odaklanıyorum.
+            </p>
+        </section>
+
+        <section class="section" id="skills">
+            <h2>Yetenekler</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Programlama Dilleri</h3>
+                    <ul class="skill-list">
+                        <li>Java (İleri Düzey)</li>
+                        <li>Python (Orta Düzey)</li>
+                        <li>C / C++ (Orta-İleri Düzey)</li>
+                        <li>Swift (Orta Düzey)</li>
+                        <li>JavaScript (Orta Düzey)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Web Geliştirme</h3>
+                    <ul class="skill-list">
+                        <li>HTML, CSS (Orta Düzey)</li>
+                        <li>JavaScript</li>
+                        <li>PHP</li>
+                        <li>Bootstrap</li>
+                        <li>MySQL</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Mobile Development</h3>
+                    <ul class="skill-list">
+                        <li>iOS Development (Swift/SwiftUI)</li>
+                        <li>MVVM Architecture</li>
+                        <li>Firebase Integration</li>
+                        <li>REST API Integration</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Gömülü Sistemler</h3>
+                    <ul class="skill-list">
+                        <li>STM32 Mikrodenetleyiciler</li>
+                        <li>Arduino</li>
+                        <li>SPI, I²C, UART Protokolleri</li>
+                        <li>RFID, Sensör Entegrasyonu</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Yazılım Araçları</h3>
+                    <ul class="skill-list">
+                        <li>Git & GitHub</li>
+                        <li>Visual Studio Code</li>
+                        <li>STM32CubeIDE</li>
+                        <li>Xcode</li>
+                        <li>Blender (3D Modelleme)</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Diller</h3>
+                    <ul class="skill-list">
+                        <li>Türkçe (Ana Dil)</li>
+                        <li>İngilizce (B2 Düzey)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="projects">
+            <h2>Projeler</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <h3>Instagram Clone (iOS)</h3>
+                    <div class="project-date">2025</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Swift</span>
+                        <span class="tech-tag">SwiftUI</span>
+                        <span class="tech-tag">MVVM</span>
+                        <span class="tech-tag">Firebase</span>
+                        <span class="tech-tag">AdMob</span>
+                    </div>
+                    <p class="project-description">
+                        Kullanıcı kayıt/giriş, gönderi paylaşımı, keşfet ve etkileşim özellikleriyle Instagram benzeri 
+                        modern bir sosyal medya uygulaması. Email, Google ve Apple ile oturum açma, fotoğraf yükleme, 
+                        beğeni sistemi ve Audius API ile müzik entegrasyonu içeriyor.
+                    </p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Web Tabanlı Eğitim Yönetim Sistemi</h3>
+                    <div class="project-date">2024 - Devam Ediyor</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">PHP</span>
+                        <span class="tech-tag">MySQL</span>
+                        <span class="tech-tag">JavaScript</span>
+                        <span class="tech-tag">Bootstrap</span>
+                    </div>
+                    <p class="project-description">
+                        Eğitim kurumlarına özel dijital yönetim sistemi. Öğrenci, öğretmen ve sınıf yönetimi, 
+                        online/yüz yüze ders takibi, rapor ekranları ve kullanıcı bazlı kontrol panelleri içeriyor.
+                    </p>
+                    <a href="http://nep.nuregitimprogrami.com" target="_blank" class="project-link">Canlı Sistem →</a>
+                </div>
+
+                <div class="project-card">
+                    <h3>Otomatik Kapı Erişim Sistemi</h3>
+                    <div class="project-date">2025</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">STM32F303K8T6</span>
+                        <span class="tech-tag">C (HAL)</span>
+                        <span class="tech-tag">RFID</span>
+                        <span class="tech-tag">Bluetooth</span>
+                    </div>
+                    <p class="project-description">
+                        RFID kart, keypad ve Bluetooth ile çok katmanlı doğrulama sistemi. Lazer bariyer ve buzzer ile 
+                        güvenlik uyarısı. SPI/I²C/UART yapılandırmaları ve kesme tabanlı okuma işlemleri içeriyor.
+                    </p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Yüz Tanıma ve Sesli Komut Giriş Sistemi</h3>
+                    <div class="project-date">2024</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">OpenCV</span>
+                        <span class="tech-tag">MediaPipe</span>
+                        <span class="tech-tag">SpeechRecognition</span>
+                    </div>
+                    <p class="project-description">
+                        Yapay zekâ destekli güvenli giriş sistemi. MediaPipe ile yüz algılama, OpenCV ile görüntü işleme 
+                        ve sesli komut tanıma entegrasyonu ile çok katmanlı güvenlik sistemi.
+                    </p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Treasure Hunt - Java GUI Oyunu</h3>
+                    <div class="project-date">2024</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Swing</span>
+                        <span class="tech-tag">LinkedList</span>
+                        <span class="tech-tag">GUI</span>
+                    </div>
+                    <p class="project-description">
+                        Veri yapıları uygulamalı macera oyunu. Bağlı liste (LinkedList) veri yapısı kullanılarak 
+                        her düğümün farklı mekânları temsil ettiği görsel hazine avı oyunu.
+                    </p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Stok ve Personel Takip Sistemi</h3>
+                    <div class="project-date">2024</div>
+                    <div class="project-tech">
+                        <span class="tech-tag">Java</span>
+                        <span class="tech-tag">Swing</span>
+                        <span class="tech-tag">GUI</span>
+                        <span class="tech-tag">File Management</span>
+                    </div>
+                    <p class="project-description">
+                        Küçük/orta ölçekli işletmelere yönelik yönetim sistemi. Stok takibi, ürün giriş/çıkışı ve 
+                        personel yönetimi işlevlerini içeren kullanıcı dostu arayüz.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" id="experience">
+            <h2>Deneyim</h2>
+            
+            <div class="experience-item">
+                <h3>iOS Developer Intern</h3>
+                <div class="experience-meta">BT Pro, İstanbul | 30 Haziran - 11 Ağustos 2025</div>
+                <div class="experience-description">
+                    Swift/SwiftUI ile MVVM mimarisinde profil, akış ve arama özellikleri geliştirdim. 
+                    Firebase (Auth/Firestore/Storage) ve REST API entegrasyonları gerçekleştirdim. 
+                    Kingfisher ile medya optimizasyonu ve Audius API ile müzik entegrasyonu yaparak 
+                    "gönderi üzerinde müzik" özelliğini hayata geçirdim.
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <h3>Yazılım Geliştirme Stajyeri</h3>
+                <div class="experience-meta">Prozen Yazılım, İstanbul | Haziran - Ağustos 2023</div>
+                <div class="experience-description">
+                    FileMaker scripting kullanarak iş uygulamaları geliştirme süreçlerine katkıda bulundum. 
+                    İlişkisel veritabanı yönetimi ve entegrasyon konularında pratik deneyim kazandım.
+                </div>
+            </div>
+
+            <h2>Eğitim</h2>
+            
+            <div class="education-item">
+                <h3>Bilgisayar Mühendisliği Lisans</h3>
+                <div class="experience-meta">Fatih Sultan Mehmet Vakıf Üniversitesi | 2022 - Devam Ediyor</div>
+            </div>
+
+            <div class="education-item">
+                <h3>Lise Diploması</h3>
+                <div class="experience-meta">Tenzile Erdoğan Kız Anadolu İmam Hatip Lisesi | 2022 Mezunu</div>
+            </div>
+
+            <h2>Gönüllülük Faaliyetleri</h2>
+
+            <div class="volunteer-item">
+                <h4>Deprem Yardım Atölyesi (Kızılay - Hatay)</h4>
+                <p>Deprem bölgesindeki üniversite sınavına hazırlanan öğrenciler için sosyal sorumluluk projesi.</p>
+            </div>
+
+            <div class="volunteer-item">
+                <h4>Bilim Üsküdar Teknoloji Atölyesi Asistanı</h4>
+                <p>Genç yetenekleri teknoloji ve yenilik ile buluşturan akademik atölyelerde görev aldım.</p>
+            </div>
+
+            <div class="volunteer-item">
+                <h4>2023 Ankara TEKNOFEST Gönüllüsü</h4>
+                <p>Türkiye'nin en büyük teknoloji festivali olan TEKNOFEST'te gönüllü olarak görev aldım.</p>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer" id="contact">
+        <p>© 2025 Veranur Durmuş. Tüm hakları saklıdır.</p>
+        <p>Bu portfolyo ile benimle iletişime geçmekten çekinmeyin!</p>
+    </footer>
+
+    <script>
+        // Scroll indicator
+        window.addEventListener('scroll', () => {
+            const scrolled = (window.pageYOffset / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+            document.getElementById('scrollIndicator').style.transform = `scaleX(${scrolled}%)`;
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-menu a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll animation to cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.project-card, .experience-item, .skill-category').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Add typing animation to the title
+        const title = document.querySelector('h1');
+        const titleText = title.textContent;
+        title.textContent = '';
+        
+        let i = 0;
+        const typeWriter = () => {
+            if (i < titleText.length) {
+                title.textContent += titleText.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        };
+        
+        setTimeout(typeWriter, 500);
+    </script>
+</body>
+</html>
